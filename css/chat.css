@@ -1,0 +1,210 @@
+.header-wrapper {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: white;
+  padding: 10px 0px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  z-index: 2;
+}
+
+.chat-body {
+  padding: 0;
+  padding-top: 100px;
+  background-image: url("../images/chatback.png");
+  min-height: 200vh;
+}
+
+.chat-body .header,
+.chat-body .status-bar {
+  padding: 0px 20px;
+}
+
+.chat__write-container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 40px;
+  /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); */
+}
+
+.chat__icon {
+  font-size: 18px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0px 8px 20px -12px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0px 8px 20px -60px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0px 8px 20px -12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.chat__write {
+  margin: 0 auto;
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0;
+  padding: 10px 60px;
+  border: none;
+  font-size: 14px;
+  transition: width 0.5s ease-in-out, border-radius 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+.chat__write:focus {
+  outline: none;
+  width: 80%;
+
+  transform: translateY(-50px);
+  border-radius: 40px;
+  animation: float 3s linear infinite forwards;
+}
+.chat__write:focus ~ .chat__icon {
+  opacity: 0;
+}
+.chat__icon-left {
+  position: absolute;
+  left: 10px;
+}
+
+.chat__icon-right {
+  position: absolute;
+  right: 10px;
+}
+
+.chat__write-column input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.chat-screen .chat-messages {
+  border-top: 1px solid #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+}
+.chat-messages .chat__timestamp {
+  background-color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 10px 0px;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.message .message__content {
+  width: 80%;
+}
+.sent-message .message__content {
+  width: 100%;
+}
+
+@keyframes spin {
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotateY(1turn);
+  }
+}
+
+.incoming-message img {
+  width: 30px;
+  border-radius: 15px;
+  margin-right: 15px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes shake {
+  from {
+    transform: translateX(-2px);
+  }
+  to {
+    transform: translateX(2px);
+  }
+}
+.message .message__bubble {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px, #00000006 0px -6px 16px -6px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  color: white;
+  font-weight: 600;
+}
+.message .message__bubble:hover {
+  animation: shake 0.1s linear 2;
+}
+.incoming-message .message__author {
+  margin-top: 10px;
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.incoming-message .message__bubble {
+  border-bottom-left-radius: 0px;
+  background-image: linear-gradient(to right, #30383a, #b7c9df);
+}
+.sent-message .message__bubble {
+  border-bottom-right-radius: 0px;
+  background-image: linear-gradient(to left, #30383a, #b7c9df);
+}
+
+@keyframes incomingAni {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.incoming-message {
+  align-self: flex-start;
+  animation: incomingAni 0.5s ease-in-out forwards;
+}
+
+@keyframes sentAni {
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.sent-message {
+  align-self: flex-end;
+  animation: sentAni 0.5s linear forwards;
+}
